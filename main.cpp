@@ -3,5 +3,5 @@
 using std::cout;
 
 int main(){
-  cout << "hellow world\n";
+  cout << "hellow world " << __cplusplus << '\n';
 }
