@@ -1,5 +1,5 @@
 CMakeFiles/hello.dir/main.cpp.obj: \
- C:\Users\Admin\Desktop\Operating_systems_project\lab1\main.cpp \
+ C:/Users/Admin/Desktop/Operating_systems_project/lab1/main.cpp \
  C:/msys64/ucrt64/include/c++/13.1.0/iostream \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/requires_hosted.h \
  C:/msys64/ucrt64/include/c++/13.1.0/x86_64-w64-mingw32/bits/c++config.h \
