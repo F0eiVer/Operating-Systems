@@ -1,3 +1,0 @@
-C:/Users/Admin/Desktop/Operating_systems_project/build/CMakeFiles/hello.dir
-C:/Users/Admin/Desktop/Operating_systems_project/build/CMakeFiles/edit_cache.dir
-C:/Users/Admin/Desktop/Operating_systems_project/build/CMakeFiles/rebuild_cache.dir
