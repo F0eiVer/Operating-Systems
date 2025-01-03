@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git pull orign main
+git pull origin main
 
 cmake -S . -B build/
 
