@@ -7,7 +7,7 @@ int main(int argc, char* argv[]){
     std::cout << "incorrect use of" << argv[0] << '\n';
     return 0;
   }
-
+  std::cout << "This is main process\n";
   BackgroundProgramm::run(argv);
 
   return 0;
