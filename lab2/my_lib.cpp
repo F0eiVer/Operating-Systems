@@ -34,6 +34,20 @@ void BackgroundProgramm::run(char* argv[]){
 
 #else
 void BackgroundProgramm::run(char* argv[]){
-  return;
+  pid_t pid;
+  int status;
+
+  switch(pid = fork()){
+    case -1:{
+      perror("fork");
+      exit(1);
+    }
+    case 0: {
+      execv(argv[1], NULL);
+    }
+    default:{
+      wait(&status);
+    }
+  }
 }
 #endif
