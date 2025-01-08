@@ -9,3 +9,6 @@
 #include <unistd.h>
 #endif
 
+namespace TimerProgramm {
+  
+}
