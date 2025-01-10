@@ -23,7 +23,7 @@ string TimerProgramm::get_cur_time(){
   // from example https://en.cppreference.com/w/c/chrono/localtime
 
   time_t t = time(NULL);
-  return to_string(asctime(localtime(&t)));
+  return string(asctime(localtime(&t)));
 }
 
 
