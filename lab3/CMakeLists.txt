@@ -12,5 +12,5 @@ add_executable(${PROJECT_NAME} ${SOURCE} ${HEADERS})
 
 IF (NOT WIN32)
     # В POSIX нужно линковаться к rt для shm_open() и к pthread для sem_open()
-    TARGET_LINK_LIBRARIES(my_shmem rt pthread)
+    TARGET_LINK_LIBRARIES(${PROJECT_NAME} rt pthread)
 ENDIF (NOT WIN32)
