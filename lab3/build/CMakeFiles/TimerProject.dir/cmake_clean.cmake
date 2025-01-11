@@ -1,12 +1,10 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/TimerProject.dir/main.cpp.obj"
-  "CMakeFiles/TimerProject.dir/main.cpp.obj.d"
-  "CMakeFiles/TimerProject.dir/programm.cpp.obj"
-  "CMakeFiles/TimerProject.dir/programm.cpp.obj.d"
-  "TimerProject.exe"
-  "TimerProject.exe.manifest"
+  "CMakeFiles/TimerProject.dir/main.cpp.o"
+  "CMakeFiles/TimerProject.dir/main.cpp.o.d"
+  "CMakeFiles/TimerProject.dir/programm.cpp.o"
+  "CMakeFiles/TimerProject.dir/programm.cpp.o.d"
+  "TimerProject"
   "TimerProject.pdb"
-  "libTimerProject.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.
