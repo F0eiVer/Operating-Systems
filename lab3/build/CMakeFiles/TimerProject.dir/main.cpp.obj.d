@@ -142,6 +142,11 @@ CMakeFiles/TimerProject.dir/main.cpp.obj: \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/ostream.tcc \
  C:/msys64/ucrt64/include/c++/13.1.0/istream \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/istream.tcc \
+ C:/msys64/ucrt64/include/c++/13.1.0/fstream \
+ C:/msys64/ucrt64/include/c++/13.1.0/bits/codecvt.h \
+ C:/msys64/ucrt64/include/c++/13.1.0/x86_64-w64-mingw32/bits/basic_file.h \
+ C:/msys64/ucrt64/include/c++/13.1.0/x86_64-w64-mingw32/bits/c++io.h \
+ C:/msys64/ucrt64/include/c++/13.1.0/bits/fstream.tcc \
  C:/Users/Admin/Desktop/Operating_systems_project/lab3/programm.hpp \
  C:/msys64/ucrt64/include/windows.h C:/msys64/ucrt64/include/sdkddkver.h \
  C:/msys64/ucrt64/include/excpt.h \
@@ -342,4 +347,5 @@ CMakeFiles/TimerProject.dir/main.cpp.obj: \
  C:/msys64/ucrt64/include/stralign.h \
  C:/msys64/ucrt64/include/sec_api/stralign_s.h \
  C:/msys64/ucrt64/include/winsvc.h C:/msys64/ucrt64/include/mcx.h \
- C:/msys64/ucrt64/include/imm.h
+ C:/msys64/ucrt64/include/imm.h \
+ C:/Users/Admin/Desktop/Operating_systems_project/lab3/my_shmem.hpp
