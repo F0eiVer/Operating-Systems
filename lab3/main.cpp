@@ -16,8 +16,8 @@ public:
 	IncrementThread(cplib_shared::SharedMem<Counter>* sh_mem) :_mem(sh_mem) {}
 	virtual void Main() {
 		while (true) {
+      increment();
 			this->Sleep(0.3);
-			increment();
 			CancelPoint();
 		}
 	}
@@ -27,6 +27,21 @@ public:
     _mem->Data()->count += 1;
     _mem->Unlock();
   }
+
+private:
+	cplib_shared::SharedMem<Counter>* _mem;
+};
+
+class DataThread : public cplib_thread::Thread {
+public:
+  DataThread(cplib_shared::SharedMem<Counter>* sh_mem) :_mem(sh_mem) {}
+	virtual void Main() {
+		while (true) {
+
+			this->Sleep(1);
+			CancelPoint();
+		}
+	}
 
 private:
 	cplib_shared::SharedMem<Counter>* _mem;

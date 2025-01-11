@@ -15,6 +15,17 @@ string TimerProgramm::get_cur_time(){
   return str_time;
 }
 
+string TimerProgramm::get_cur_data() {
+  SYSTEMTIME lt;
+  GetLocalTime(&lt);
+  string str_data = "";
+
+  str_data += to_string(lt.wDay) + ".";
+  str_data += to_string(lt.wMonth) + ".";
+  str_data += to_string(lt.wYear);
+  return str_data;
+}
+
 int TimerProgramm::get_pid(){
   return GetCurrentProcessId();
 }
@@ -37,9 +48,21 @@ string TimerProgramm::get_cur_time(){
   return str_time;
 }
 
+string TimerProgramm::get_cur_data(){
+  string str_data = "";
+
+  time_t t = time(NULL);
+  struct tm *now = localtime(&t);
+
+  str_data += to_string(now->tm_day) + ".";
+  str_data += to_string(now->tm_mon + 1) + ".";
+  str_data += to_string(now->tm_year + 1900);
+
+  return str_data;
+}
+
 int TimerProgramm::get_pid(){
   return getpid();
 }
-
 
 #endif
