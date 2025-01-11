@@ -28,9 +28,9 @@ string TimerProgramm::get_cur_time(){
   str_time += to_string(now->tm_hour) + ":";
   str_time += to_string(now->tm_min) + ":";
   str_time += to_string(now->tm_sec) + ":";
-  str_time += to_string(tv->tv_usec % 1000);
+  str_time += to_string(tv.tv_usec % 1000);
 
-  return string(localtime(&t));
+  return str_time;
 }
 
 
