@@ -6,6 +6,16 @@
 
 using std::cin;
 using std::cout;
+using std::to_string;
+
+void write(std::string str, bool next = true) {
+  std::ofstream out("log.txt", std::ios::app);
+  if (out.is_open()){
+    out << str;
+    next ? out << "\n" : out << " ";
+  }
+  out.close();  
+}
 
 struct Counter{
   int count = 0;
@@ -36,8 +46,15 @@ class DataThread : public cplib_thread::Thread {
 public:
   DataThread(cplib_shared::SharedMem<Counter>* sh_mem) :_mem(sh_mem) {}
 	virtual void Main() {
+    int count = 0;
 		while (true) {
-
+      _mem->Lock();
+      count = _mem->Data()->count;
+      _mem->Unlock();
+      write("my pid: " + to_string(TimerProgramm::get_pid()), false);
+      write("count: " + to_string(count), false);
+      write("data: " + TimerProgramm::get_cur_data(), false);
+      write(TimerProgramm::get_cur_time());
 			this->Sleep(1);
 			CancelPoint();
 		}
@@ -47,27 +64,21 @@ private:
 	cplib_shared::SharedMem<Counter>* _mem;
 };
 
-void write(std::string str, bool next = true) {
-  std::ofstream out("log.txt", std::ios::app);
-  if (out.is_open()){
-    out << str;
-    next ? out << "\n" : out << " ";
-  }
-  out.close();  
-}
-
 int main(int argc, char** argv) {
   auto shmem = cplib_shared::SharedMem<Counter>("shmem");
   std::string cmd = "";
   int iparam = 0;
 
+  write("my pid: " + to_string(TimerProgramm::get_pid()), false);
+  write(TimerProgramm::get_cur_time());
+
   IncrementThread th_increment(&shmem);
+  DataThread th_data(&shmem);
 
   th_increment.Start();
+  th_data.Start();
 	th_increment.WaitStartup();
-
-  write("my pid: " + std::to_string(TimerProgramm::get_pid()), false);
-  write(TimerProgramm::get_cur_time());
+  th_data.WaitStartup();
 
   while(true){
     std::cin >> cmd;
@@ -90,7 +101,9 @@ int main(int argc, char** argv) {
   }
 
   th_increment.Stop();
+  th_data.Stop();
 	th_increment.Join();
+  th_data.Join();
   return 0;
 }
 
