@@ -199,7 +199,8 @@ CMakeFiles/TimerProject.dir/main.cpp.o: /home/egor/Projects/lab3/main.cpp \
  /usr/include/x86_64-linux-gnu/bits/sigthread.h \
  /usr/include/x86_64-linux-gnu/bits/signal_ext.h \
  /usr/include/x86_64-linux-gnu/bits/types/idtype_t.h \
- /usr/include/x86_64-linux-gnu/sys/time.h \
+ /usr/include/x86_64-linux-gnu/sys/time.h /usr/include/spawn.h \
+ /usr/include/x86_64-linux-gnu/bits/spawn_ext.h \
  /home/egor/Projects/lab3/my_shmem.hpp /usr/include/string.h \
  /usr/include/strings.h \
  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
@@ -229,4 +230,7 @@ CMakeFiles/TimerProject.dir/main.cpp.o: /home/egor/Projects/lab3/main.cpp \
  /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \
  /usr/include/linux/falloc.h /usr/include/x86_64-linux-gnu/bits/fcntl2.h \
- /usr/include/semaphore.h /usr/include/x86_64-linux-gnu/bits/semaphore.h
+ /usr/include/semaphore.h /usr/include/x86_64-linux-gnu/bits/semaphore.h \
+ /home/egor/Projects/lab3/my_thread.hpp /usr/include/c++/13/deque \
+ /usr/include/c++/13/bits/stl_uninitialized.h \
+ /usr/include/c++/13/bits/stl_deque.h /usr/include/c++/13/bits/deque.tcc

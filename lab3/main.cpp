@@ -93,7 +93,6 @@ public:
         _mem->Lock();
         copies = _mem->Data()->cur_copies;
         _mem->Unlock();
-        cout << copies << '\n';
         if(!copies){
           TimerProgramm::create_process(_argc, _argv, (char *)"1");
           _mem->Lock();

@@ -94,7 +94,7 @@ string TimerProgramm::get_cur_data(){
   time_t t = time(NULL);
   struct tm *now = localtime(&t);
 
-  str_data += to_string(now->tm_day) + ".";
+  str_data += to_string(now->tm_mday) + ".";
   str_data += to_string(now->tm_mon + 1) + ".";
   str_data += to_string(now->tm_year + 1900);
 
@@ -105,33 +105,16 @@ int TimerProgramm::get_pid(){
   return getpid();
 }
 
-void TimerProgramm::create_process(int argc, char* argv[], char* copy_num){
-  string cmd = "";
-  for (int i = 0; i < argc; ++i){
-    cmd += argv[i];
-    cmd += " ";
-  }
-  cmd += copy_num;
-
-  pid_t pid;
-  int status;
-
-  switch(pid = fork()){
-    case -1:{
-      perror("fork");
-      exit(1);
-    }
-    case 0: {
-      execv(argv[0], (char *)cmd.c_str());
-    }
-    default:{
-      wait(&status);
-    }
-  }
+void TimerProgramm::sleep(int sec) {
+  usleep(sec * 1000000);
 }
 
-void TimerProgramm::sleep(int sec) {
-  sleep(sec);
+void TimerProgramm::create_process(int argc, char* argv[], char* copy_num){
+  std::cout << "create: " << copy_num << '\n';
+  char* argv_new[] = {argv[0], copy_num, 0};
+  pid_t pid;
+  int status = posix_spawn(&pid, argv[0], NULL, NULL, argv_new, NULL);
+  waitpid(pid, &status, 0);
 }
 
 #endif
