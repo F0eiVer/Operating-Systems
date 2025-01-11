@@ -348,4 +348,9 @@ CMakeFiles/TimerProject.dir/main.cpp.obj: \
  C:/msys64/ucrt64/include/sec_api/stralign_s.h \
  C:/msys64/ucrt64/include/winsvc.h C:/msys64/ucrt64/include/mcx.h \
  C:/msys64/ucrt64/include/imm.h \
- C:/Users/Admin/Desktop/Operating_systems_project/lab3/my_shmem.hpp
+ C:/Users/Admin/Desktop/Operating_systems_project/lab3/my_shmem.hpp \
+ C:/Users/Admin/Desktop/Operating_systems_project/lab3/my_thread.hpp \
+ C:/msys64/ucrt64/include/c++/13.1.0/deque \
+ C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_uninitialized.h \
+ C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_deque.h \
+ C:/msys64/ucrt64/include/c++/13.1.0/bits/deque.tcc

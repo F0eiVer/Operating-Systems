@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/egor/Projects/lab3/main.cpp" "CMakeFiles/TimerProject.dir/main.cpp.o" "gcc" "CMakeFiles/TimerProject.dir/main.cpp.o.d"
-  "/home/egor/Projects/lab3/programm.cpp" "CMakeFiles/TimerProject.dir/programm.cpp.o" "gcc" "CMakeFiles/TimerProject.dir/programm.cpp.o.d"
+  "C:/Users/Admin/Desktop/Operating_systems_project/lab3/main.cpp" "CMakeFiles/TimerProject.dir/main.cpp.obj" "gcc" "CMakeFiles/TimerProject.dir/main.cpp.obj.d"
+  "C:/Users/Admin/Desktop/Operating_systems_project/lab3/programm.cpp" "CMakeFiles/TimerProject.dir/programm.cpp.obj" "gcc" "CMakeFiles/TimerProject.dir/programm.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

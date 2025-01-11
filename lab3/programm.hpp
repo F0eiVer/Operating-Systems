@@ -17,5 +17,5 @@ namespace TimerProgramm {
   using std::to_string;
 
   string get_cur_time();
-
+  int get_pid();
 }

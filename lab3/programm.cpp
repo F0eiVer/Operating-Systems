@@ -15,6 +15,10 @@ string TimerProgramm::get_cur_time(){
   return str_time;
 }
 
+int TimerProgramm::get_pid(){
+  return GetCurrentProcessId();
+}
+
 #else
 
 string TimerProgramm::get_cur_time(){
@@ -31,6 +35,10 @@ string TimerProgramm::get_cur_time(){
   str_time += to_string(tv.tv_usec % 1000);
 
   return str_time;
+}
+
+int TimerProgramm::get_pid(){
+  return getpid();
 }
 
 

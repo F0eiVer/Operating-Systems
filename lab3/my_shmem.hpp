@@ -22,7 +22,7 @@
 
 #define SEM_NAME_POSTFIX "_sem"
 
-namespace cplib
+namespace cplib_shared
 {
     template <class T> class SharedMem
     {

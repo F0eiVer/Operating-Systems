@@ -18,7 +18,7 @@ typedef pthread_t rc_thread_id;
 #include <string.h> // memset()
 #include <deque>    // std::deque
 
-namespace cplib
+namespace cplib_thread
 {
 	// Коды возврата
 	enum ThreadReturns
