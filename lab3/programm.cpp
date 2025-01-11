@@ -4,14 +4,14 @@ using namespace TimerProgramm;
 #ifdef _WIN32
 
 string TimerProgramm::get_cur_time(){
-  SYSTEMTIME st;
-  GetSystemTime(&st);
+  SYSTEMTIME lt;
+  GetLocalTime(&lt);
   string str_time = "";
 
-  str_time += to_string(st.wHour) + ":";
-  str_time += to_string(st.wMinute) + ":";
-  str_time += to_string(st.wSecond) + ":";
-  str_time += to_string(st.wMilliseconds);
+  str_time += to_string(lt.wHour) + ":";
+  str_time += to_string(lt.wMinute) + ":";
+  str_time += to_string(lt.wSecond) + ":";
+  str_time += to_string(lt.wMilliseconds);
   return str_time;
 }
 
@@ -30,7 +30,7 @@ string TimerProgramm::get_cur_time(){
   str_time += to_string(now->tm_sec) + ":";
   str_time += to_string(tv->tv_usec % 1000);
 
-  return string(localtime(&t));
+  return str_time;
 }
 
 
