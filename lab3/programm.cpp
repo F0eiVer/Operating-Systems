@@ -30,6 +30,46 @@ int TimerProgramm::get_pid(){
   return GetCurrentProcessId();
 }
 
+void TimerProgramm::create_process(int argc, char* argv[], char* copy_num){
+  string cmd = "";
+  for (int i = 0; i < argc; ++i){
+    cmd += argv[i];
+    cmd += " ";
+  }
+  cmd += copy_num;
+
+  STARTUPINFO si;
+  PROCESS_INFORMATION pi;
+  ZeroMemory(&si, sizeof(si));
+  si.cb = sizeof(si);
+  ZeroMemory(&pi, sizeof(pi));
+
+  if(!CreateProcess(
+    NULL,
+    (char *)cmd.c_str(),
+    NULL,
+    NULL,
+    false,
+    0,
+    NULL,
+    NULL,
+    &si,
+    &pi))
+  {
+    std::cout << "Process creation failed\n";
+    return;
+  }
+
+  WaitForSingleObject(pi.hProcess, INFINITE);
+
+  CloseHandle(pi.hProcess);
+  CloseHandle(pi.hThread);
+}
+
+void TimerProgramm::sleep(int sec) {
+  Sleep(sec * 1000);
+}
+
 #else
 
 string TimerProgramm::get_cur_time(){
@@ -63,6 +103,35 @@ string TimerProgramm::get_cur_data(){
 
 int TimerProgramm::get_pid(){
   return getpid();
+}
+
+void TimerProgramm::create_process(int argc, char* argv[], char* copy_num){
+  string cmd = "";
+  for (int i = 0; i < argc; ++i){
+    cmd += argv[i];
+    cmd += " ";
+  }
+  cmd += copy_num;
+
+  pid_t pid;
+  int status;
+
+  switch(pid = fork()){
+    case -1:{
+      perror("fork");
+      exit(1);
+    }
+    case 0: {
+      execv(argv[0], (char *)cmd.c_str());
+    }
+    default:{
+      wait(&status);
+    }
+  }
+}
+
+void TimerProgramm::sleep(int sec) {
+  sleep(sec);
 }
 
 #endif

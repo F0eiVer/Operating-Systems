@@ -19,4 +19,6 @@ namespace TimerProgramm {
   string get_cur_time();
   string get_cur_data();
   int get_pid();
+  void create_process(int argc, char* argv[], char* copy_num);
+  void sleep(int sec);
 }

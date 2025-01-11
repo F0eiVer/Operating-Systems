@@ -1,85 +1,43 @@
-my pid: 18252 count: 1 data: 11.1.2025 19:48:57:914
-my pid: 18252 count: 4 data: 11.1.2025 19:48:58:917
-my pid: 18252 count: 7 data: 11.1.2025 19:48:59:920
-my pid: 18252 count: 13 data: 11.1.2025 19:49:0:924
-my pid: 18252 count: 19 data: 11.1.2025 19:49:1:927
-my pid: 18252 count: 26 data: 11.1.2025 19:49:2:931
-my pid: 18252 count: 33 data: 11.1.2025 19:49:3:934
-my pid: 18252 count: 39 data: 11.1.2025 19:49:4:937
-my pid: 18252 count: 46 data: 11.1.2025 19:49:5:941
-my pid: 18252 count: 53 data: 11.1.2025 19:49:6:945
-my pid: 18252 count: 59 data: 11.1.2025 19:49:7:949
-my pid: 18252 count: 10003 data: 11.1.2025 19:49:8:952
-my pid: 18252 count: 10010 data: 11.1.2025 19:49:9:955
-my pid: 18252 count: 10016 data: 11.1.2025 19:49:10:959
-my pid: 18252 count: 10023 data: 11.1.2025 19:49:11:963
-my pid: 18252 count: 10030 data: 11.1.2025 19:49:12:965
-my pid: 18252 count: 10036 data: 11.1.2025 19:49:13:967
-my pid: 18252 count: 10043 data: 11.1.2025 19:49:14:970
-my pid: 18252 count: 10050 data: 11.1.2025 19:49:15:973
-my pid: 18252 count: 10056 data: 11.1.2025 19:49:16:977
-my pid: 18252 count: 10063 data: 11.1.2025 19:49:17:980
-my pid: 18252 count: 10070 data: 11.1.2025 19:49:18:983
-my pid: 18252 count: 10076 data: 11.1.2025 19:49:19:987
-my pid: 18252 count: 10083 data: 11.1.2025 19:49:20:990
-my pid: 18252 count: 10090 data: 11.1.2025 19:49:21:993
-my pid: 18252 count: 502 data: 11.1.2025 19:49:22:996
-my pid: 18252 count: 509 data: 11.1.2025 19:49:24:0
-my pid: 18252 count: 516 data: 11.1.2025 19:49:25:3
-my pid: 18252 count: 522 data: 11.1.2025 19:49:26:5
-my pid: 18252 count: 529 data: 11.1.2025 19:49:27:8
-my pid: 11948 count: 1 data: 11.1.2025 19:51:16:338
-my pid: 11948 count: 4 data: 11.1.2025 19:51:17:340
-my pid: 11948 count: 7 data: 11.1.2025 19:51:18:343
-my pid: 11948 count: 11 data: 11.1.2025 19:51:19:345
-my pid: 11948 count: 14 data: 11.1.2025 19:51:20:348
-my pid: 11948 count: 17 data: 11.1.2025 19:51:21:350
-my pid: 11948 count: 21 data: 11.1.2025 19:51:22:353
-my pid: 11948 count: 24 data: 11.1.2025 19:51:23:356
-my pid: 11948 count: 28 data: 11.1.2025 19:51:24:359
-my pid: 11948 count: 35 data: 11.1.2025 19:51:25:361
-my pid: 11948 count: 41 data: 11.1.2025 19:51:26:363
-my pid: 11948 count: 48 data: 11.1.2025 19:51:27:367
-my pid: 11948 count: 55 data: 11.1.2025 19:51:28:370
-my pid: 11948 count: 61 data: 11.1.2025 19:51:29:372
-my pid: 11948 count: 68 data: 11.1.2025 19:51:30:375
-my pid: 11948 count: 75 data: 11.1.2025 19:51:31:378
-my pid: 11948 count: 81 data: 11.1.2025 19:51:32:382
-my pid: 11948 count: 88 data: 11.1.2025 19:51:33:385
-my pid: 11948 count: 95 data: 11.1.2025 19:51:34:388
-my pid: 11948 count: 10001 data: 11.1.2025 19:51:35:391
-my pid: 11948 count: 10008 data: 11.1.2025 19:51:36:394
-my pid: 11948 count: 10015 data: 11.1.2025 19:51:37:396
-my pid: 11948 count: 10021 data: 11.1.2025 19:51:38:399
-my pid: 11948 count: 10028 data: 11.1.2025 19:51:39:403
-my pid: 11948 count: 10035 data: 11.1.2025 19:51:40:406
-my pid: 11948 count: 10041 data: 11.1.2025 19:51:41:408
-my pid: 11948 count: 600 data: 11.1.2025 19:51:42:411
-my pid: 11948 count: 607 data: 11.1.2025 19:51:43:412
-my pid: 11948 count: 614 data: 11.1.2025 19:51:44:415
-my pid: 11948 count: 620 data: 11.1.2025 19:51:45:417
-my pid: 11948 count: 627 data: 11.1.2025 19:51:46:421
-my pid: 18856 count: 1 data: 11.1.2025 19:53:9:424
-my pid: 18856 count: 4 data: 11.1.2025 19:53:10:427
-my pid: 18856 count: 7 data: 11.1.2025 19:53:11:429
-my pid: 18856 count: 13 data: 11.1.2025 19:53:12:432
-my pid: 18856 count: 19 data: 11.1.2025 19:53:13:434
-my pid: 18856 count: 25 data: 11.1.2025 19:53:14:436
-my pid: 18856 count: 33 data: 11.1.2025 19:53:15:439
-my pid: 18856 count: 39 data: 11.1.2025 19:53:16:443
-my pid: 18856 count: 45 data: 11.1.2025 19:53:17:446
-my pid: 18856 count: 53 data: 11.1.2025 19:53:18:449
-my pid: 18856 count: 59 data: 11.1.2025 19:53:19:451
-my pid: 18856 count: 1000 data: 11.1.2025 19:53:20:454
-my pid: 18856 count: 1008 data: 11.1.2025 19:53:21:457
-my pid: 18856 count: 1014 data: 11.1.2025 19:53:22:461
-my pid: 18856 count: 1020 data: 11.1.2025 19:53:23:463
-my pid: 18856 count: 1028 data: 11.1.2025 19:53:24:466
-my pid: 18856 count: 1034 data: 11.1.2025 19:53:25:468
-my pid: 7128 count: 1045 data: 11.1.2025 19:53:28:115
-my pid: 7128 count: 1048 data: 11.1.2025 19:53:29:118
-my pid: 7128 count: 1051 data: 11.1.2025 19:53:30:121
-my pid: 7128 count: 1055 data: 11.1.2025 19:53:31:124
-my pid: 7128 count: 1058 data: 11.1.2025 19:53:32:127
-my pid: 7128 count: 1061 data: 11.1.2025 19:53:33:130
-my pid: 7128 count: 1065 data: 11.1.2025 19:53:34:133
+my pid: 15596 22:17:37:343
+my pid: 15596 count: 1 data: 11.1.2025 22:17:37:346
+copy1 pid: 17896 copy1 start time: 22:17:37:367
+copy1 end time: 22:17:37:368
+copy2 pid: 4464 copy2 start time: 22:17:37:393
+my pid: 15596 count: 25 data: 11.1.2025 22:17:38:349
+my pid: 15596 count: 28 data: 11.1.2025 22:17:39:353
+copy2 end time: 22:17:39:394
+my pid: 15596 count: 18 data: 11.1.2025 22:17:40:356
+my pid: 15596 count: 21 data: 11.1.2025 22:17:41:360
+my pid: 15596 count: 24 data: 11.1.2025 22:17:42:364
+copy1 pid: 19188 copy1 start time: 22:17:42:420
+copy1 end time: 22:17:42:421
+copy2 pid: 392 copy2 start time: 22:17:42:444
+my pid: 15596 count: 72 data: 11.1.2025 22:17:43:367
+my pid: 15596 count: 75 data: 11.1.2025 22:17:44:370
+copy2 end time: 22:17:44:445
+my pid: 15596 count: 40 data: 11.1.2025 22:17:45:375
+my pid: 15596 count: 44 data: 11.1.2025 22:17:46:378
+my pid: 15596 count: 47 data: 11.1.2025 22:17:47:381
+copy1 pid: 9940 copy1 start time: 22:17:47:474
+copy1 end time: 22:17:47:474
+copy2 pid: 6548 copy2 start time: 22:17:47:497
+my pid: 15596 count: 117 data: 11.1.2025 22:17:48:384
+my pid: 15596 count: 121 data: 11.1.2025 22:17:49:388
+copy2 end time: 22:17:49:498
+my pid: 15596 count: 63 data: 11.1.2025 22:17:50:391
+my pid: 15596 count: 66 data: 11.1.2025 22:17:51:395
+my pid: 15596 count: 70 data: 11.1.2025 22:17:52:397
+copy1 pid: 5460 copy1 start time: 22:17:52:525
+copy1 end time: 22:17:52:525
+copy2 pid: 13280 copy2 start time: 22:17:52:549
+my pid: 15596 count: 163 data: 11.1.2025 22:17:53:400
+my pid: 15596 count: 166 data: 11.1.2025 22:17:54:403
+copy2 end time: 22:17:54:550
+my pid: 15596 count: 86 data: 11.1.2025 22:17:55:405
+my pid: 15596 count: 89 data: 11.1.2025 22:17:56:409
+my pid: 15596 count: 92 data: 11.1.2025 22:17:57:412
+copy1 pid: 17900 copy1 start time: 22:17:57:579
+copy1 end time: 22:17:57:580
+copy2 pid: 10732 copy2 start time: 22:17:57:603
+my pid: 15596 count: 209 data: 11.1.2025 22:17:58:414
+copy2 end time: 22:17:59:605
