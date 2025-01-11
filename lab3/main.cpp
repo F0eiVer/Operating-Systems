@@ -19,6 +19,7 @@ void write(std::string str, bool next = true) {
 
 struct Counter{
   int count = 0;
+  int cur_writer = -1;
 };
 
 class IncrementThread : public cplib_thread::Thread {
@@ -47,14 +48,22 @@ public:
   DataThread(cplib_shared::SharedMem<Counter>* sh_mem) :_mem(sh_mem) {}
 	virtual void Main() {
     int count = 0;
+    int cur_writer = 0;
 		while (true) {
       _mem->Lock();
       count = _mem->Data()->count;
+      cur_writer = _mem->Data()->cur_writer;
+      if(cur_writer < 0){
+        _mem->Data()->cur_writer = TimerProgramm::get_pid();
+      }
       _mem->Unlock();
-      write("my pid: " + to_string(TimerProgramm::get_pid()), false);
-      write("count: " + to_string(count), false);
-      write("data: " + TimerProgramm::get_cur_data(), false);
-      write(TimerProgramm::get_cur_time());
+      
+      if(cur_writer == TimerProgramm::get_pid()){
+        write("my pid: " + to_string(TimerProgramm::get_pid()), false);
+        write("count: " + to_string(count), false);
+        write("data: " + TimerProgramm::get_cur_data(), false);
+        write(TimerProgramm::get_cur_time());
+      }
 			this->Sleep(1);
 			CancelPoint();
 		}
@@ -65,13 +74,21 @@ private:
 };
 
 int main(int argc, char** argv) {
+  int programms = 0;
   auto shmem = cplib_shared::SharedMem<Counter>("shmem");
+  shmem.Lock();
+  if(shmem.Data()->cur_writer < 0){
+    shmem.Data()->cur_writer = TimerProgramm::get_pid();
+  }
+  shmem.Unlock();
   std::string cmd = "";
   int iparam = 0;
 
-  write("my pid: " + to_string(TimerProgramm::get_pid()), false);
-  write(TimerProgramm::get_cur_time());
-
+  if(programms == 1){
+    write("my pid: " + to_string(TimerProgramm::get_pid()), false);
+    write(TimerProgramm::get_cur_time());
+  }
+  
   IncrementThread th_increment(&shmem);
   DataThread th_data(&shmem);
 
@@ -104,6 +121,12 @@ int main(int argc, char** argv) {
   th_data.Stop();
 	th_increment.Join();
   th_data.Join();
+
+  shmem.Lock();
+  if(shmem.Data()->cur_writer == TimerProgramm::get_pid()){
+    shmem.Data()->cur_writer = -1;
+  }
+  shmem.Unlock();
   return 0;
 }
 
