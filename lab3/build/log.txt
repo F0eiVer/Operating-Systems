@@ -1,0 +1,26 @@
+my pid: 1852 13:12:40:619
+my pid: 1852 count: 1 data: 12.1.2025 13:12:40:619
+copy1 pid: 17920 copy1 start time: 13:12:40:634
+copy1 end time: 13:12:40:634
+copy2 pid: 1928 copy2 start time: 13:12:40:650
+my pid: 1852 count: 25 data: 12.1.2025 13:12:41:634
+my pid: 1852 count: 28 data: 12.1.2025 13:12:42:646
+copy2 end time: 13:12:42:658
+my pid: 1852 count: 17 data: 12.1.2025 13:12:43:657
+my pid: 1852 count: 20 data: 12.1.2025 13:12:44:671
+my pid: 1852 count: 24 data: 12.1.2025 13:12:45:674
+copy1 pid: 14264 copy1 start time: 13:12:45:689
+copy1 end time: 13:12:45:689
+copy2 pid: 7380 copy2 start time: 13:12:45:699
+my pid: 1852 count: 71 data: 12.1.2025 13:12:46:687
+my pid: 1852 count: 74 data: 12.1.2025 13:12:47:704
+copy2 end time: 13:12:47:720
+my pid: 1852 count: 40 data: 12.1.2025 13:12:48:713
+my pid: 1852 count: 44 data: 12.1.2025 13:12:49:718
+my pid: 1852 count: 47 data: 12.1.2025 13:12:50:734
+copy1 pid: 3704 copy1 start time: 13:12:50:749
+copy1 end time: 13:12:50:749
+copy2 pid: 15404 copy2 start time: 13:12:50:765
+my pid: 1852 count: 117 data: 12.1.2025 13:12:51:740
+my pid: 1852 count: 120 data: 12.1.2025 13:12:52:748
+copy2 end time: 13:12:52:778

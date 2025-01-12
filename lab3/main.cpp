@@ -120,9 +120,6 @@ private:
 
 int main(int argc, char** argv) {
   auto shmem = cplib_shared::SharedMem<Counter>("shmem");
-  if(argc > 1){
-    cout << argv[0] << " " << argv[1] << "\n";
-  }
   
   if(argc < 2){
     int cur_writer = 0;
@@ -184,7 +181,6 @@ int main(int argc, char** argv) {
     }
     shmem.Unlock();
   } else if (argv[1][0] == '1'){
-    cout << "copy1\n";
     write("copy1 pid: " + to_string(TimerProgramm::get_pid()), false);
     write("copy1 start time: " + TimerProgramm::get_cur_time());
     shmem.Lock();
@@ -196,7 +192,6 @@ int main(int argc, char** argv) {
     shmem.Data()->cur_copies -= 1;
     shmem.Unlock();
   } else if (argv[1][0] == '2') {
-    cout << "copy2\n";
     write("copy2 pid: " + to_string(TimerProgramm::get_pid()), false);
     write("copy2 start time: " + TimerProgramm::get_cur_time());
     shmem.Lock();
