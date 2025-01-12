@@ -1,0 +1,4 @@
+C:/Users/Admin/Desktop/Operating_systems_project/lab4/build/CMakeFiles/gen.dir
+C:/Users/Admin/Desktop/Operating_systems_project/lab4/build/CMakeFiles/Log.dir
+C:/Users/Admin/Desktop/Operating_systems_project/lab4/build/CMakeFiles/edit_cache.dir
+C:/Users/Admin/Desktop/Operating_systems_project/lab4/build/CMakeFiles/rebuild_cache.dir
