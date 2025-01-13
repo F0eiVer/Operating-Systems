@@ -4,44 +4,94 @@
 #include "my_thread.hpp"
 #include "help_programm.hpp"
 
-std::string INPUT_PORT = "COM5";
+using std::string;
+
+string INPUT_PORT = "COM5";
+
+string TMP_FILE_NAME = "tmp.txt";
+string CUR_FILE = "cur.txt";
+string AVG_HOUR = "hour.txt";
+string AVG_DAY = "day.txt";
+
 time_t SEC_HOUR = 3600;
 time_t SEC_DAY = 86400;
 time_t SEC_MONTH = 2592000;
 time_t SEC_YEAR = 31536000;
 
-void write(std::string str, std::string file_name, bool next = true) {
-  std::ofstream out(file_name, std::ios::app);
-  if (out.is_open()){
-    out << str;
-    next ? out << "\n" : out << " ";
+
+time_t get_time(string line){
+  size_t indx1 = line.find('*');
+  size_t indx2 = line.find('*', indx1 + 1);
+  return std::stoll(line.substr(indx1 + 1, indx2 - indx1));
+}
+
+double get_temp(string line){
+  size_t indx1 = line.find('*');
+  return std::stod(line.substr(0, indx1 + 1));
+}
+
+void copy_file(string file_name){
+  std::ifstream in(file_name, std::ios::binary);
+  std::ofstream out(TMP_FILE_NAME, std::ios::binary);
+
+  out << in.rdbuf();
+
+  in.close();
+  out.close();
+}
+
+void write_valid(string file_name, time_t time_now, time_t max_time){
+  string line;
+  copy_file(file_name);
+  std::ifstream in(TMP_FILE_NAME);
+  std::ofstream out(file_name);
+
+  if (in.is_open())
+  {
+    while (std::getline(in, line))
+    {
+      if(time_now - get_time(line) < max_time){
+        out << line << '\n';
+      }
+    }
   }
+  in.close();
+
+}
+
+void write(string str, string file_name, time_t max_time) {
+  time_t time_now = help_P::my_time();
+  write_valid(file_name, time_now, max_time);
+
+  std::ofstream out(file_name, std::ios::app);
+  
+  size_t indx = str.find('.');
+  str = str.substr(0, indx + 6);
+  str = str + '*' + std::to_string(time_now) + '*';
+  erase(str, ' ');
+
+  if (out.is_open() && str[0] != '*'){
+    out << str << "\n";
+  }
+
   out.close();  
 }
 
 class SecondLogThread : public cplib_thread::Thread {
 public:
-	SecondLogThread(std::string port_name): _port(port_name) {}
+	SecondLogThread(string port_name): _port(port_name) {}
 	virtual void Main() {
     cplib::SerialPort smport(_port, cplib::SerialPort::BAUDRATE_115200);
     if (!smport.IsOpen()) {
       std::cout << "Failed to open port \n";
       return;
     }
-    std::string temp;
-    temp.erase();
+    string temp;
 
     smport >> temp;
 		while (true) {
       smport >> temp;
-      size_t indx = temp.find('.');
-      temp = temp.substr(0, indx + 6);
-      temp = temp + '*' + std::to_string(help_P::my_time()) + '*';
-      erase(temp, ' ');
-      if(temp[0] != '*'){
-        write(temp, "cur_log.txt");
-      }
-			// this->Sleep(1.0);
+      write(temp, CUR_FILE, SEC_DAY);
 			CancelPoint();
 		}
 	}

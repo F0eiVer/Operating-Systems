@@ -8,6 +8,12 @@ using std::cin;
 using std::cout;
 using std::to_string;
 
+time_t SEC_HOUR = 3600;
+time_t SEC_DAY = 86400;
+time_t SEC_MONTH = 2592000;
+time_t SEC_YEAR = 31536000;
+
+
 void write(std::string str, bool next = true) {
   std::ofstream out("log.txt", std::ios::app);
   if (out.is_open()){
