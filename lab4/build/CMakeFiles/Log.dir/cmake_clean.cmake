@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Log.dir/help_programm.cpp.obj"
+  "CMakeFiles/Log.dir/help_programm.cpp.obj.d"
   "CMakeFiles/Log.dir/main.cpp.obj"
   "CMakeFiles/Log.dir/main.cpp.obj.d"
   "Log.exe"

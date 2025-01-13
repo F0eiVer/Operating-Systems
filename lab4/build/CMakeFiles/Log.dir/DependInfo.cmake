@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "C:/Users/Admin/Desktop/Operating_systems_project/lab4/help_programm.cpp" "CMakeFiles/Log.dir/help_programm.cpp.obj" "gcc" "CMakeFiles/Log.dir/help_programm.cpp.obj.d"
   "C:/Users/Admin/Desktop/Operating_systems_project/lab4/main.cpp" "CMakeFiles/Log.dir/main.cpp.obj" "gcc" "CMakeFiles/Log.dir/main.cpp.obj.d"
   )
 

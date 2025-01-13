@@ -1,5 +1,6 @@
-CMakeFiles/Log.dir/main.cpp.obj: \
- C:/Users/Admin/Desktop/Operating_systems_project/lab4/main.cpp \
+CMakeFiles/Log.dir/help_programm.cpp.obj: \
+ C:/Users/Admin/Desktop/Operating_systems_project/lab4/help_programm.cpp \
+ C:/Users/Admin/Desktop/Operating_systems_project/lab4/help_programm.hpp \
  C:/msys64/ucrt64/include/c++/13.1.0/iostream \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/requires_hosted.h \
  C:/msys64/ucrt64/include/c++/13.1.0/x86_64-w64-mingw32/bits/c++config.h \
@@ -142,12 +143,7 @@ CMakeFiles/Log.dir/main.cpp.obj: \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/ostream.tcc \
  C:/msys64/ucrt64/include/c++/13.1.0/istream \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/istream.tcc \
- C:/msys64/ucrt64/include/c++/13.1.0/fstream \
- C:/msys64/ucrt64/include/c++/13.1.0/bits/codecvt.h \
- C:/msys64/ucrt64/include/c++/13.1.0/x86_64-w64-mingw32/bits/basic_file.h \
- C:/msys64/ucrt64/include/c++/13.1.0/x86_64-w64-mingw32/bits/c++io.h \
- C:/msys64/ucrt64/include/c++/13.1.0/bits/fstream.tcc \
- C:/Users/Admin/Desktop/Operating_systems_project/lab4/my_serial.hpp \
+ C:/msys64/ucrt64/include/c++/13.1.0/ctime \
  C:/msys64/ucrt64/include/windows.h C:/msys64/ucrt64/include/sdkddkver.h \
  C:/msys64/ucrt64/include/excpt.h \
  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stdarg.h \
@@ -314,12 +310,12 @@ CMakeFiles/Log.dir/main.cpp.obj: \
  C:/msys64/ucrt64/include/playsoundapi.h \
  C:/msys64/ucrt64/include/mmeapi.h C:/msys64/ucrt64/include/timeapi.h \
  C:/msys64/ucrt64/include/joystickapi.h C:/msys64/ucrt64/include/nb30.h \
- C:/msys64/ucrt64/include/rpc.h C:/msys64/ucrt64/include/windows.h \
- C:/msys64/ucrt64/include/rpcdce.h C:/msys64/ucrt64/include/rpcdcep.h \
- C:/msys64/ucrt64/include/rpcnsi.h C:/msys64/ucrt64/include/rpcnterr.h \
- C:/msys64/ucrt64/include/rpcasync.h C:/msys64/ucrt64/include/shellapi.h \
- C:/msys64/ucrt64/include/winperf.h C:/msys64/ucrt64/include/winsock.h \
- C:/msys64/ucrt64/include/_bsd_types.h C:/msys64/ucrt64/include/inaddr.h \
+ C:/msys64/ucrt64/include/rpc.h C:/msys64/ucrt64/include/rpcdce.h \
+ C:/msys64/ucrt64/include/rpcdcep.h C:/msys64/ucrt64/include/rpcnsi.h \
+ C:/msys64/ucrt64/include/rpcnterr.h C:/msys64/ucrt64/include/rpcasync.h \
+ C:/msys64/ucrt64/include/shellapi.h C:/msys64/ucrt64/include/winperf.h \
+ C:/msys64/ucrt64/include/winsock.h C:/msys64/ucrt64/include/_bsd_types.h \
+ C:/msys64/ucrt64/include/inaddr.h \
  C:/msys64/ucrt64/include/psdk_inc/_socket_types.h \
  C:/msys64/ucrt64/include/psdk_inc/_fd_types.h \
  C:/msys64/ucrt64/include/psdk_inc/_ip_types.h \
@@ -347,15 +343,4 @@ CMakeFiles/Log.dir/main.cpp.obj: \
  C:/msys64/ucrt64/include/stralign.h \
  C:/msys64/ucrt64/include/sec_api/stralign_s.h \
  C:/msys64/ucrt64/include/winsvc.h C:/msys64/ucrt64/include/mcx.h \
- C:/msys64/ucrt64/include/imm.h \
- C:/msys64/ucrt64/include/c++/13.1.0/cstring \
- C:/msys64/ucrt64/include/c++/13.1.0/cstdint \
- C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stdint.h \
- C:/msys64/ucrt64/include/stdint.h \
- C:/Users/Admin/Desktop/Operating_systems_project/lab4/my_thread.hpp \
- C:/msys64/ucrt64/include/c++/13.1.0/deque \
- C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_uninitialized.h \
- C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_deque.h \
- C:/msys64/ucrt64/include/c++/13.1.0/bits/deque.tcc \
- C:/Users/Admin/Desktop/Operating_systems_project/lab4/help_programm.hpp \
- C:/msys64/ucrt64/include/c++/13.1.0/ctime
+ C:/msys64/ucrt64/include/imm.h

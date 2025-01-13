@@ -63,7 +63,6 @@ CMakeFiles/gen.dir/temp_generator.cpp.obj: C:/Users/Admin/Desktop/Operating_syst
   C:/msys64/ucrt64/include/c++/13.1.0/bits/ranges_util.h \
   C:/msys64/ucrt64/include/c++/13.1.0/bits/refwrap.h \
   C:/msys64/ucrt64/include/c++/13.1.0/bits/requires_hosted.h \
-  C:/msys64/ucrt64/include/c++/13.1.0/bits/sstream.tcc \
   C:/msys64/ucrt64/include/c++/13.1.0/bits/std_abs.h \
   C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_algobase.h \
   C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_construct.h \
@@ -109,7 +108,6 @@ CMakeFiles/gen.dir/temp_generator.cpp.obj: C:/Users/Admin/Desktop/Operating_syst
   C:/msys64/ucrt64/include/c++/13.1.0/numbers \
   C:/msys64/ucrt64/include/c++/13.1.0/ostream \
   C:/msys64/ucrt64/include/c++/13.1.0/pstl/pstl_config.h \
-  C:/msys64/ucrt64/include/c++/13.1.0/sstream \
   C:/msys64/ucrt64/include/c++/13.1.0/stdexcept \
   C:/msys64/ucrt64/include/c++/13.1.0/stdlib.h \
   C:/msys64/ucrt64/include/c++/13.1.0/streambuf \
@@ -419,6 +417,12 @@ C:/msys64/ucrt64/include/_mingw.h:
 
 C:/msys64/ucrt64/include/c++/13.1.0/bits/cxxabi_init_exception.h:
 
+C:/msys64/ucrt64/include/c++/13.1.0/bits/basic_string.tcc:
+
+C:/msys64/ucrt64/include/c++/13.1.0/bits/invoke.h:
+
+C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_algobase.h:
+
 C:/msys64/ucrt64/include/debugapi.h:
 
 C:/Users/Admin/Desktop/Operating_systems_project/lab4/my_serial.hpp:
@@ -426,12 +430,6 @@ C:/Users/Admin/Desktop/Operating_systems_project/lab4/my_serial.hpp:
 C:/msys64/ucrt64/include/c++/13.1.0/bits/cpp_type_traits.h:
 
 C:/msys64/ucrt64/include/c++/13.1.0/bits/range_access.h:
-
-C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_algobase.h:
-
-C:/msys64/ucrt64/include/c++/13.1.0/bits/basic_string.tcc:
-
-C:/msys64/ucrt64/include/c++/13.1.0/bits/invoke.h:
 
 C:/msys64/ucrt64/include/ioapiset.h:
 
@@ -452,8 +450,6 @@ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/clflushoptintrin.h:
 C:/msys64/ucrt64/include/winsvc.h:
 
 C:/msys64/ucrt64/include/_mingw_off_t.h:
-
-C:/msys64/ucrt64/include/c++/13.1.0/bits/sstream.tcc:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/sgxintrin.h:
 
@@ -720,8 +716,6 @@ C:/msys64/ucrt64/include/c++/13.1.0/numbers:
 C:/msys64/ucrt64/include/c++/13.1.0/ostream:
 
 C:/msys64/ucrt64/include/c++/13.1.0/pstl/pstl_config.h:
-
-C:/msys64/ucrt64/include/c++/13.1.0/sstream:
 
 C:/msys64/ucrt64/include/psdk_inc/_wsa_errnos.h:
 

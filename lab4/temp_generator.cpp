@@ -1,5 +1,5 @@
 #include "my_serial.hpp"
-#include <sstream>              // std::stringstream
+// #include <sstream>              // std::stringstream
 #include <iostream>             // std::cout
 #include <ctime>
 
@@ -10,13 +10,13 @@
 
 std::string OUT_PORT = "COM4";
 
-// Сконвертировать любой базовый тип в строку
-template<class T> std::string to_string(const T& v)
-{
-    std::ostringstream ss;
-    ss << v;
-    return ss.str();
-}
+// // Сконвертировать любой базовый тип в строку
+// template<class T> std::string to_string(const T& v)
+// {
+//     std::ostringstream ss;
+//     ss << v;
+//     return ss.str();
+// }
 
 void csleep(double timeout) {
 #if defined (WIN32)
@@ -52,7 +52,7 @@ int main(int argc, char** argv)
 
     std::string mystr;
     while(true) {
-        smport << to_string(f_rand(-30.0, 30.0));
+        smport << std::to_string(f_rand(-30.0, 30.0));
         csleep(1.0);
     }
     return 0;

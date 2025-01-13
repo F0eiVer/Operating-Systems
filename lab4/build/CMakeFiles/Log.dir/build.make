@@ -86,18 +86,34 @@ CMakeFiles/Log.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Log.dir/main.cpp.s"
 	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/Users/Admin/Desktop/Operating_systems_project/lab4/main.cpp -o CMakeFiles/Log.dir/main.cpp.s
 
+CMakeFiles/Log.dir/help_programm.cpp.obj: CMakeFiles/Log.dir/flags.make
+CMakeFiles/Log.dir/help_programm.cpp.obj: C:/Users/Admin/Desktop/Operating_systems_project/lab4/help_programm.cpp
+CMakeFiles/Log.dir/help_programm.cpp.obj: CMakeFiles/Log.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/Admin/Desktop/Operating_systems_project/lab4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Log.dir/help_programm.cpp.obj"
+	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Log.dir/help_programm.cpp.obj -MF CMakeFiles/Log.dir/help_programm.cpp.obj.d -o CMakeFiles/Log.dir/help_programm.cpp.obj -c C:/Users/Admin/Desktop/Operating_systems_project/lab4/help_programm.cpp
+
+CMakeFiles/Log.dir/help_programm.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Log.dir/help_programm.cpp.i"
+	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:/Users/Admin/Desktop/Operating_systems_project/lab4/help_programm.cpp > CMakeFiles/Log.dir/help_programm.cpp.i
+
+CMakeFiles/Log.dir/help_programm.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Log.dir/help_programm.cpp.s"
+	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/Users/Admin/Desktop/Operating_systems_project/lab4/help_programm.cpp -o CMakeFiles/Log.dir/help_programm.cpp.s
+
 # Object files for target Log
 Log_OBJECTS = \
-"CMakeFiles/Log.dir/main.cpp.obj"
+"CMakeFiles/Log.dir/main.cpp.obj" \
+"CMakeFiles/Log.dir/help_programm.cpp.obj"
 
 # External object files for target Log
 Log_EXTERNAL_OBJECTS =
 
 Log.exe: CMakeFiles/Log.dir/main.cpp.obj
+Log.exe: CMakeFiles/Log.dir/help_programm.cpp.obj
 Log.exe: CMakeFiles/Log.dir/build.make
 Log.exe: CMakeFiles/Log.dir/linkLibs.rsp
 Log.exe: CMakeFiles/Log.dir/objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:/Users/Admin/Desktop/Operating_systems_project/lab4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Log.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:/Users/Admin/Desktop/Operating_systems_project/lab4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Log.exe"
 	"C:/Program Files/CMake/bin/cmake.exe" -E rm -f CMakeFiles/Log.dir/objects.a
 	C:/msys64/ucrt64/bin/ar.exe qc CMakeFiles/Log.dir/objects.a @CMakeFiles/Log.dir/objects1.rsp
 	g++ -std=c++20 -Wextra -O2 -Wl,--whole-archive CMakeFiles/Log.dir/objects.a -Wl,--no-whole-archive -o Log.exe -Wl,--out-implib,libLog.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/Log.dir/linkLibs.rsp

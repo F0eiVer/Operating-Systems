@@ -142,6 +142,30 @@ Log/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Log.dir/build.make CMakeFiles/Log.dir/build
 .PHONY : Log/fast
 
+help_programm.obj: help_programm.cpp.obj
+.PHONY : help_programm.obj
+
+# target to build an object file
+help_programm.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Log.dir/build.make CMakeFiles/Log.dir/help_programm.cpp.obj
+.PHONY : help_programm.cpp.obj
+
+help_programm.i: help_programm.cpp.i
+.PHONY : help_programm.i
+
+# target to preprocess a source file
+help_programm.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Log.dir/build.make CMakeFiles/Log.dir/help_programm.cpp.i
+.PHONY : help_programm.cpp.i
+
+help_programm.s: help_programm.cpp.s
+.PHONY : help_programm.s
+
+# target to generate assembly for a file
+help_programm.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Log.dir/build.make CMakeFiles/Log.dir/help_programm.cpp.s
+.PHONY : help_programm.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -200,6 +224,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Log"
 	@echo "... gen"
+	@echo "... help_programm.obj"
+	@echo "... help_programm.i"
+	@echo "... help_programm.s"
 	@echo "... main.obj"
 	@echo "... main.i"
 	@echo "... main.s"
