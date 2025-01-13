@@ -8,7 +8,11 @@
 #	include <time.h>            // nanosleep()
 #endif
 
+#ifdef _WIN32
 std::string OUT_PORT = "COM4";
+#else
+std::string OUT_PORT = "/dev/pts/1";
+#endif
 
 // // Сконвертировать любой базовый тип в строку
 // template<class T> std::string to_string(const T& v)

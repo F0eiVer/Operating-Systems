@@ -5,8 +5,11 @@
 #include "help_programm.hpp"
 
 using std::string;
-
+#ifdef _WIN32
 string INPUT_PORT = "COM5";
+#else
+string INPUT_PORT = "/dev/pts/2";
+#endif
 
 string TMP_FILE_NAME = "tmp.txt";
 string CUR_FILE = "cur.txt";
