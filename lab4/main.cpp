@@ -43,6 +43,26 @@ void copy_file(string file_name){
   out.close();
 }
 
+double get_avg_temp(string file_name, time_t time_now, time_t interval_time){
+  string line;
+  std::ifstream in(file_name);
+  double sum_d = 0;
+  double count_d = 0;
+
+  if (in.is_open())
+  {
+    while (std::getline(in, line))
+    {
+      if(time_now - get_time(line) <= interval_time){
+        sum_d += get_time(line);
+        count_d++;
+      }
+    }
+  }
+  in.close();
+  return sum_d / count_d;
+}
+
 void write_valid(string file_name, time_t time_now, time_t max_time){
   string line;
   copy_file(file_name);
@@ -58,15 +78,17 @@ void write_valid(string file_name, time_t time_now, time_t max_time){
       }
     }
   }
+  out.close();
   in.close();
-
 }
 
-void write(string str, string file_name, time_t max_time) {
-  time_t time_now = help_P::my_time();
-  write_valid(file_name, time_now, max_time);
 
-  std::ofstream out(file_name, std::ios::app);
+
+void write(string str) {
+  time_t time_now = help_P::my_time();
+  write_valid(CUR_FILE, time_now, SEC_DAY);
+
+  std::ofstream out(CUR_FILE, std::ios::app);
   
   size_t indx = str.find('.');
   str = str.substr(0, indx + 6);
@@ -78,6 +100,36 @@ void write(string str, string file_name, time_t max_time) {
   }
 
   out.close();  
+
+  if(time_now % SEC_HOUR == 0){
+    write_valid(AVG_HOUR, time_now, SEC_MONTH);
+
+    str = std::to_string(get_avg_temp(CUR_FILE, time_now, SEC_HOUR));
+    indx = str.find('.');
+    str = str.substr(0, indx + 6);
+    str = str + '*' + std::to_string(time_now) + '*';
+    erase(str, ' ');
+
+    std::ofstream out(AVG_HOUR, std::ios::app);
+    if (out.is_open()){
+      out << str << "\n";
+    }
+    out.close();  
+  } else if (time_now % SEC_DAY == 0) {
+    write_valid(AVG_DAY, time_now, SEC_YEAR);
+
+    str = std::to_string(get_avg_temp(AVG_HOUR, time_now, SEC_DAY));
+    indx = str.find('.');
+    str = str.substr(0, indx + 6);
+    str = str + '*' + std::to_string(time_now) + '*';
+    erase(str, ' ');
+
+    std::ofstream out(AVG_DAY, std::ios::app);
+    if (out.is_open()){
+      out << str << "\n";
+    }
+    out.close(); 
+  }
 }
 
 class SecondLogThread : public cplib_thread::Thread {
@@ -94,7 +146,7 @@ public:
     smport >> temp;
 		while (true) {
       smport >> temp;
-      write(temp, CUR_FILE, SEC_DAY);
+      write(temp);
 			CancelPoint();
 		}
 	}

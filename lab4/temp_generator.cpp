@@ -14,14 +14,6 @@ std::string OUT_PORT = "COM4";
 std::string OUT_PORT = "/dev/pts/1";
 #endif
 
-// // Сконвертировать любой базовый тип в строку
-// template<class T> std::string to_string(const T& v)
-// {
-//     std::ostringstream ss;
-//     ss << v;
-//     return ss.str();
-// }
-
 void csleep(double timeout) {
 #if defined (WIN32)
 	if (timeout <= 0.0)
