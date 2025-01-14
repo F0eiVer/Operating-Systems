@@ -82,8 +82,6 @@ void write_valid(string file_name, time_t time_now, time_t max_time){
   in.close();
 }
 
-
-
 void write(string str) {
   time_t time_now = help_P::my_time();
   write_valid(CUR_FILE, time_now, SEC_DAY);
@@ -132,9 +130,9 @@ void write(string str) {
   }
 }
 
-class SecondLogThread : public cplib_thread::Thread {
+class LogThread : public cplib_thread::Thread {
 public:
-	SecondLogThread(string port_name): _port(port_name) {}
+	LogThread(string port_name): _port(port_name) {}
 	virtual void Main() {
     cplib::SerialPort smport(_port, cplib::SerialPort::BAUDRATE_115200);
     if (!smport.IsOpen()) {
@@ -155,7 +153,7 @@ private:
 };
 
 int main(int argc, char** argv){
-  SecondLogThread th_log(INPUT_PORT);
+  LogThread th_log(INPUT_PORT);
   th_log.Start();
   th_log.WaitStartup();
   std::string cmd = "";
