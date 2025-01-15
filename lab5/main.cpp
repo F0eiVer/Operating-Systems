@@ -27,16 +27,6 @@ char* SQL_CREATE_TABLES = "CREATE TABLE IF NOT EXISTS cur_temp(id INTEGER PRIMAR
                           "CREATE TABLE IF NOT EXISTS hour_temp(id INTEGER PRIMARY KEY AUTOINCREMENT, temp REAL, time INTEGER);"
                           "CREATE TABLE IF NOT EXISTS day_temp(id INTEGER PRIMARY KEY AUTOINCREMENT, temp REAL, time INTEGER);";
 
-void copy_file(string file_name){
-  std::ifstream in(file_name, std::ios::binary);
-  std::ofstream out(TMP_FILE_NAME, std::ios::binary);
-
-  out << in.rdbuf();
-
-  in.close();
-  out.close();
-}
-
 double get_avg_temp(string file_name, time_t time_now, time_t interval_time){
   string line;
   std::ifstream in(file_name);
@@ -55,73 +45,6 @@ double get_avg_temp(string file_name, time_t time_now, time_t interval_time){
   }
   in.close();
   return sum_d / count_d;
-}
-
-void write_valid(string file_name, time_t time_now, time_t max_time){
-  string line;
-  copy_file(file_name);
-  std::ifstream in(TMP_FILE_NAME);
-  std::ofstream out(file_name);
-
-  if (in.is_open())
-  {
-    while (std::getline(in, line))
-    {
-      if(time_now - help_P::get_time(line) < max_time){
-        out << line << '\n';
-      }
-    }
-  }
-  out.close();
-  in.close();
-}
-
-void write(string str) {
-  time_t time_now = help_P::my_time();
-  write_valid(CUR_FILE, time_now, SEC_DAY);
-
-  std::ofstream out(CUR_FILE, std::ios::app);
-  
-  size_t indx = str.find('.');
-  str = str.substr(0, indx + 6);
-  str = str + '*' + std::to_string(time_now) + '*';
-  erase(str, ' ');
-
-  if (out.is_open() && str[0] != '*'){
-    out << str << "\n";
-  }
-
-  out.close();  
-
-  if(time_now % SEC_HOUR == 0){
-    write_valid(AVG_HOUR, time_now, SEC_MONTH);
-
-    str = std::to_string(get_avg_temp(CUR_FILE, time_now, SEC_HOUR));
-    indx = str.find('.');
-    str = str.substr(0, indx + 6);
-    str = str + '*' + std::to_string(time_now) + '*';
-    erase(str, ' ');
-
-    std::ofstream out(AVG_HOUR, std::ios::app);
-    if (out.is_open()){
-      out << str << "\n";
-    }
-    out.close();  
-  } else if (time_now % SEC_DAY == 0) {
-    write_valid(AVG_DAY, time_now, SEC_YEAR);
-
-    str = std::to_string(get_avg_temp(AVG_HOUR, time_now, SEC_DAY));
-    indx = str.find('.');
-    str = str.substr(0, indx + 6);
-    str = str + '*' + std::to_string(time_now) + '*';
-    erase(str, ' ');
-
-    std::ofstream out(AVG_DAY, std::ios::app);
-    if (out.is_open()){
-      out << str << "\n";
-    }
-    out.close(); 
-  }
 }
 
 int db_delete(sqlite3* db, time_t time_now){
