@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <sqlite3.h>
 #include "my_serial.hpp"
 #include "my_thread.hpp"
 #include "help_programm.hpp"
@@ -15,23 +16,12 @@ string TMP_FILE_NAME = "tmp.txt";
 string CUR_FILE = "cur.txt";
 string AVG_HOUR = "hour.txt";
 string AVG_DAY = "day.txt";
+char* DATABASE_NAME = "temperature.db";
 
 time_t SEC_HOUR = 3600;
 time_t SEC_DAY = 86400;
 time_t SEC_MONTH = 2592000;
 time_t SEC_YEAR = 31536000;
-
-
-time_t get_time(string line){
-  size_t indx1 = line.find('*');
-  size_t indx2 = line.find('*', indx1 + 1);
-  return std::stoll(line.substr(indx1 + 1, indx2 - indx1));
-}
-
-double get_temp(string line){
-  size_t indx1 = line.find('*');
-  return std::stod(line.substr(0, indx1 + 1));
-}
 
 void copy_file(string file_name){
   std::ifstream in(file_name, std::ios::binary);
@@ -53,8 +43,8 @@ double get_avg_temp(string file_name, time_t time_now, time_t interval_time){
   {
     while (std::getline(in, line))
     {
-      if(time_now - get_time(line) <= interval_time){
-        sum_d += get_time(line);
+      if(time_now - help_P::get_time(line) <= interval_time){
+        sum_d += help_P::get_time(line);
         count_d++;
       }
     }
@@ -73,7 +63,7 @@ void write_valid(string file_name, time_t time_now, time_t max_time){
   {
     while (std::getline(in, line))
     {
-      if(time_now - get_time(line) < max_time){
+      if(time_now - help_P::get_time(line) < max_time){
         out << line << '\n';
       }
     }
@@ -139,6 +129,25 @@ public:
       std::cout << "Failed to open port \n";
       return;
     }
+
+    sqlite3 *db;    // указатель на базу данных
+    char *err_msg = 0;
+    // открываем подключение к базе данных
+    int result  = sqlite3_open(DATABASE_NAME, &db);
+    // если подключение успешно установлено
+    if(result == SQLITE_OK) {
+      std::cout << "Connection established\n";
+    } else {
+      sqlite3_close(db);
+      std::cout << "Can't connect to database\n";
+    }
+    result = sqlite3_exec(db, help_P::SQL_CREATE, 0, 0, &err_msg);
+    if (result != SQLITE_OK ){
+        std::cout << "SQL error: %s\n" << err_msg;
+        sqlite3_free(err_msg);
+        sqlite3_close(db);
+        return;
+    }
     string temp;
 
     smport >> temp;
@@ -147,6 +156,8 @@ public:
       write(temp);
 			CancelPoint();
 		}
+
+    sqlite3_close(db);
 	}
 private:
   std::string _port;
