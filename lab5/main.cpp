@@ -23,6 +23,10 @@ time_t SEC_DAY = 86400;
 time_t SEC_MONTH = 2592000;
 time_t SEC_YEAR = 31536000;
 
+char* SQL_CREATE_TABLES = "CREATE TABLE IF NOT EXISTS cur_temp(id INTEGER PRIMARY KEY AUTOINCREMENT, temp REAL, time INTEGER);"
+                          "CREATE TABLE IF NOT EXISTS hour_temp(id INTEGER PRIMARY KEY AUTOINCREMENT, temp REAL, time INTEGER);"
+                          "CREATE TABLE IF NOT EXISTS day_temp(id INTEGER PRIMARY KEY AUTOINCREMENT, temp REAL, time INTEGER);";
+
 void copy_file(string file_name){
   std::ifstream in(file_name, std::ios::binary);
   std::ofstream out(TMP_FILE_NAME, std::ios::binary);
@@ -120,67 +124,104 @@ void write(string str) {
   }
 }
 
+int db_delete(sqlite3* db, time_t time_now){
+  char *err_msg = 0;
+  char *sql = (char*)("DELETE FROM cur_temp WHERE " + std::to_string(time_now) + " - time > " + std::to_string(SEC_DAY)).c_str();
+  int rc = sqlite3_exec(db, sql, 0, 0, &err_msg); 
+
+  if(time_now % SEC_HOUR == 0){
+    sql = (char*)("DELETE FROM hour_temp WHERE " + std::to_string(time_now) + " - time > " + std::to_string(SEC_MONTH)).c_str();
+    int rc = sqlite3_exec(db, sql, 0, 0, &err_msg); 
+  }else if (time_now % SEC_DAY == 0) {
+    sql = (char*)("DELETE FROM day_temp WHERE " + std::to_string(time_now) + " - time > " + std::to_string(SEC_YEAR)).c_str();
+    int rc = sqlite3_exec(db, sql, 0, 0, &err_msg); 
+  }
+  return rc;
+}
+
+int db_add(sqlite3* db, string str){
+  time_t time_now = help_P::my_time();
+
+  int rc = db_delete(db, time_now);
+  if(rc != SQLITE_OK){
+    std::cout << "delete problems\n";
+    return rc;
+  }
+  char *err_msg = 0;
+
+  size_t indx = str.find('.');
+  str = str.substr(0, indx + 6);
+  char *sql = (char *)("INSERT INTO cur_temp (temp, time) VALUES (" + str + "," + std::to_string(time_now) + ");").c_str();
+  rc = sqlite3_exec(db, sql, 0, 0, &err_msg); 
+
+  if(time_now % SEC_HOUR == 0){
+    sql = (char *)("INSERT INTO hour_temp (temp, time) VALUES (" + str + "," + std::to_string(time_now) + ");").c_str();
+    int rc = sqlite3_exec(db, sql, 0, 0, &err_msg); 
+  } else if (time_now % SEC_DAY == 0) {
+    sql = (char *)("INSERT INTO day_temp (temp, time) VALUES (" + str + "," + std::to_string(time_now) + ");").c_str();
+    int rc = sqlite3_exec(db, sql, 0, 0, &err_msg); 
+  }
+  return rc;
+}
+
 class LogThread : public cplib_thread::Thread {
 public:
-	LogThread(string port_name): _port(port_name) {}
+	LogThread(string port_name, sqlite3* db): _port(port_name), _db(db) {}
 	virtual void Main() {
     cplib::SerialPort smport(_port, cplib::SerialPort::BAUDRATE_115200);
     if (!smport.IsOpen()) {
       std::cout << "Failed to open port \n";
       return;
     }
-
-    sqlite3 *db;    // указатель на базу данных
     char *err_msg = 0;
     // открываем подключение к базе данных
-    int result  = sqlite3_open(DATABASE_NAME, &db);
+    int result  = sqlite3_open(DATABASE_NAME, &_db);
     // если подключение успешно установлено
     if(result == SQLITE_OK) {
       std::cout << "Connection established\n";
     } else {
-      sqlite3_close(db);
+      sqlite3_close(_db);
       std::cout << "Can't connect to database\n";
     }
-    result = sqlite3_exec(db, help_P::SQL_CREATE, 0, 0, &err_msg);
-    if (result != SQLITE_OK ){
-        std::cout << "SQL error: %s\n" << err_msg;
-        sqlite3_free(err_msg);
-        sqlite3_close(db);
-        return;
+    result = sqlite3_exec(_db, SQL_CREATE_TABLES, 0, 0, &err_msg);
+    if (result != SQLITE_OK){
+      std::cout << "SQL error: %s\n" << err_msg;
+      sqlite3_free(err_msg);
+      return;
     }
     string temp;
 
     smport >> temp;
 		while (true) {
-      smport >> temp;
-      write(temp);
+      smport >> temp;;
+      db_add(_db, temp);
+      //write(temp);
 			CancelPoint();
 		}
-
-    sqlite3_close(db);
 	}
 private:
   std::string _port;
+  sqlite3* _db;
 };
 
 int main(int argc, char** argv){
-  LogThread th_log(INPUT_PORT);
+  sqlite3* db;
+  LogThread th_log(INPUT_PORT, db);
   th_log.Start();
   th_log.WaitStartup();
   std::string cmd = "";
 
   while(true){
     std::cin >> cmd;
-    if (cmd == "i" || cmd == "int") {
-    } else if (cmd == "s" || cmd == "show"){
-    } else if (cmd == "e" || cmd == "q" || cmd == "exit" || cmd == "quite") {
+    if (cmd == "e" || cmd == "q" || cmd == "exit" || cmd == "quite") {
       break;
     } else{
-      std::cout << "Possible commands: i | s | q\n";
+      std::cout << "Possible commands: e\n";
     }
   }
 
   th_log.Stop();
   th_log.Join();
+  sqlite3_close(db);
   return 0;
 }

@@ -18,6 +18,3 @@ double help_P::get_temp(string line){
   return std::stod(line.substr(0, indx1 + 1));
 }
 
-void help_P::db_add(string line){
-
-}
