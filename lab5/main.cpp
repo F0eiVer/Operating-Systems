@@ -156,9 +156,17 @@ int db_add(sqlite3* db, string str){
 
   if(time_now % SEC_HOUR == 0){
     sql = (char *)("INSERT INTO hour_temp (temp, time) VALUES (" + str + "," + std::to_string(time_now) + ");").c_str();
+    str = std::to_string(get_avg_temp(CUR_FILE, time_now, SEC_HOUR));
+    indx = str.find('.');
+    str = str.substr(0, indx + 6);
+
     int rc = sqlite3_exec(db, sql, 0, 0, &err_msg); 
   } else if (time_now % SEC_DAY == 0) {
     sql = (char *)("INSERT INTO day_temp (temp, time) VALUES (" + str + "," + std::to_string(time_now) + ");").c_str();
+    str = std::to_string(get_avg_temp(AVG_HOUR, time_now, SEC_DAY));
+    indx = str.find('.');
+    str = str.substr(0, indx + 6);
+    
     int rc = sqlite3_exec(db, sql, 0, 0, &err_msg); 
   }
   return rc;
@@ -195,7 +203,6 @@ public:
 		while (true) {
       smport >> temp;;
       db_add(_db, temp);
-      //write(temp);
 			CancelPoint();
 		}
 	}
