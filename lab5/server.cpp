@@ -3,9 +3,11 @@
 #include <iostream>         /* std::cout */
 #include <string>           /* std::string */
 #include <sstream>          /* std::stringbuf */  
-
+#include <fstream>
+#include <sqlite3.h>
 #include <stdlib.h>         /* atoi */
 #include <string.h>         /* memset */
+#include <string>
 
 #ifdef _WIN32
 #   include <winsock2.h>    /* socket */
@@ -63,6 +65,10 @@ protected:
 class HTTPServer: public SocketWorker
 {
 public:
+    HTTPServer(sqlite3* db): _db(db) {};
+    ~HTTPServer(){
+        sqlite3_close(_db);
+    }
 	// Регистрируем сокет на прослушку подключения
     SOCKET Listen(const std::string& interface_ip, short int port)
     {
@@ -128,29 +134,41 @@ public:
             CloseSocket(client_socket);
             return;
         }
-        std::cout << m_input_buf << '\n';
-        // Сюда запишем полный ответ клиенту
+        std::string input = m_input_buf;
+        std::string type = input.substr(input.find("GET") + 4, 4);
         std::stringstream response;
-        // Сюда запишем HTML-страницу с ответом
-        std::stringstream response_body; // тело ответа
-        // TODO: хороший сервер должен анализировать заголовки запроса (m_input_buf)
-        // и на их основе создавать ответ. Но это - плохой сервер )
-        response_body << "<html>\n<head>"
-                      << "\t<meta http-equiv=\"Refresh\" content=\"1\" />\n"
-                      << "\t<title>Temperature Device Server</title>\n"
-                      << "</head>\n\t<body>\n"
-                      << "\t\t<h1>Temperature Device Server</h1>\n"
-                      << "\t\t<p>Current device data: <b>"
-                      << (strlen(device_str) ? device_str : "No data provided!")
-                      << "</b></p>\n"
-                      << "\t</body>\n</html>";
-        // Формируем весь ответ вместе с заголовками
+        std::stringstream response_body;
+        char* sql_stmt = "";
+        sqlite3_stmt* stmt;
+        int rc = sqlite3_open("temperature.db", &_db);
+
+        if(type == "/sec"){
+            sql_stmt = "SELECT * FROM cur_temp";
+        }else if(type == "/hou"){
+            sql_stmt = "SELECT * FROM hour_temp";
+        }else if(type == "/day"){
+            sql_stmt = "SELECT * FROM day_temp";
+        }
+
+        if(sql_stmt == ""){
+            response_body << readFile("../index.html", NULL);
+        }else {
+            rc = sqlite3_prepare_v2(_db, sql_stmt, -1, &stmt, 0);
+            if (rc != SQLITE_OK) {
+                printf("\nUnable to fetch data");
+                sqlite3_close(_db);
+                return;
+            }
+            response_body << readFile("../data.html", stmt);
+        }
+        
         response << "HTTP/1.0 200 OK\r\n"
                  << "Version: HTTP/1.1\r\n"
                  << "Content-Type: text/html; charset=utf-8\r\n"
                  << "Content-Length: " << response_body.str().length()
                  << "\r\n\r\n"
                  << response_body.str();
+        
         // Отправляем ответ клиенту
         result = send(client_socket, response.str().c_str(), (int)response.str().length(), 0);
         if (result == SOCKET_ERROR) {
@@ -164,6 +182,26 @@ public:
 private:
 	// Буфер для чтения запроса браузера
     char   m_input_buf[1024];
+    sqlite3* _db;
+
+    std::string readFile(std::string fileName, sqlite3_stmt* table_data){
+        std::ifstream f(fileName);
+        std::stringstream ss;
+        ss << f.rdbuf();
+        std::string file_body = ss.str();
+        if(!table_data){
+            return file_body;
+        }
+
+        std::string first_part = file_body.substr(0, file_body.find("<tbody>") + 7);
+        std::string second_part = file_body.substr(file_body.find("<tbody>") + 7);
+        while (sqlite3_step(table_data) == SQLITE_ROW) {
+            first_part += "<tr><td>" + std::string(((char*)sqlite3_column_text(table_data, 1))) + "</td><td>" +  std::string(((char*)sqlite3_column_text(table_data, 2))) + "</td></tr>";
+        }
+        first_part += second_part;
+        //"<tr><td> </td><td> </td></tr>"
+        return first_part;
+    }
 };
 
 // Основная программа
@@ -173,6 +211,7 @@ int main (int argc, char** argv)
         std::cout << "Usage: ipv4srv_addr srv_port" << std::endl;
         return -1;
     }
+    sqlite3* db;
     // Инициализируем библиотеку сокетов (под Windows)
 #ifdef _WIN32
     WSADATA wsaData;
@@ -183,7 +222,7 @@ int main (int argc, char** argv)
     signal(SIGPIPE, SIG_IGN);
 #endif
 	// Создаем клиент и сервер и инициализируем их
-    HTTPServer srv;
+    HTTPServer srv(db);
     SOCKET server_socket = srv.Listen(argv[1], atoi(argv[2]));
     if (server_socket == INVALID_SOCKET) {
         std::cout << "Terminating..." << std::endl;

@@ -233,6 +233,7 @@ sqlite3.obj: sqlite3.c.obj
 # target to build an object file
 sqlite3.c.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Log.dir/build.make CMakeFiles/Log.dir/sqlite3.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/sqlite3.c.obj
 .PHONY : sqlite3.c.obj
 
 sqlite3.i: sqlite3.c.i
@@ -241,6 +242,7 @@ sqlite3.i: sqlite3.c.i
 # target to preprocess a source file
 sqlite3.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Log.dir/build.make CMakeFiles/Log.dir/sqlite3.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/sqlite3.c.i
 .PHONY : sqlite3.c.i
 
 sqlite3.s: sqlite3.c.s
@@ -249,6 +251,7 @@ sqlite3.s: sqlite3.c.s
 # target to generate assembly for a file
 sqlite3.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Log.dir/build.make CMakeFiles/Log.dir/sqlite3.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/sqlite3.c.s
 .PHONY : sqlite3.c.s
 
 temp_generator.obj: temp_generator.cpp.obj

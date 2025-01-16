@@ -17,4 +17,3 @@ double help_P::get_temp(string line){
   size_t indx1 = line.find('*');
   return std::stod(line.substr(0, indx1 + 1));
 }
-

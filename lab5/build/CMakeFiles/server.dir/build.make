@@ -86,18 +86,34 @@ CMakeFiles/server.dir/server.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/server.dir/server.cpp.s"
 	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/Users/Admin/Desktop/Operating_systems_project/lab5/server.cpp -o CMakeFiles/server.dir/server.cpp.s
 
+CMakeFiles/server.dir/sqlite3.c.obj: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/sqlite3.c.obj: C:/Users/Admin/Desktop/Operating_systems_project/lab5/sqlite3.c
+CMakeFiles/server.dir/sqlite3.c.obj: CMakeFiles/server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/Admin/Desktop/Operating_systems_project/lab5/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/server.dir/sqlite3.c.obj"
+	gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/server.dir/sqlite3.c.obj -MF CMakeFiles/server.dir/sqlite3.c.obj.d -o CMakeFiles/server.dir/sqlite3.c.obj -c C:/Users/Admin/Desktop/Operating_systems_project/lab5/sqlite3.c
+
+CMakeFiles/server.dir/sqlite3.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/server.dir/sqlite3.c.i"
+	gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:/Users/Admin/Desktop/Operating_systems_project/lab5/sqlite3.c > CMakeFiles/server.dir/sqlite3.c.i
+
+CMakeFiles/server.dir/sqlite3.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/server.dir/sqlite3.c.s"
+	gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:/Users/Admin/Desktop/Operating_systems_project/lab5/sqlite3.c -o CMakeFiles/server.dir/sqlite3.c.s
+
 # Object files for target server
 server_OBJECTS = \
-"CMakeFiles/server.dir/server.cpp.obj"
+"CMakeFiles/server.dir/server.cpp.obj" \
+"CMakeFiles/server.dir/sqlite3.c.obj"
 
 # External object files for target server
 server_EXTERNAL_OBJECTS =
 
 server.exe: CMakeFiles/server.dir/server.cpp.obj
+server.exe: CMakeFiles/server.dir/sqlite3.c.obj
 server.exe: CMakeFiles/server.dir/build.make
 server.exe: CMakeFiles/server.dir/linkLibs.rsp
 server.exe: CMakeFiles/server.dir/objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:/Users/Admin/Desktop/Operating_systems_project/lab5/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable server.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:/Users/Admin/Desktop/Operating_systems_project/lab5/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable server.exe"
 	"C:/Program Files/CMake/bin/cmake.exe" -E rm -f CMakeFiles/server.dir/objects.a
 	C:/msys64/ucrt64/bin/ar.exe qc CMakeFiles/server.dir/objects.a @CMakeFiles/server.dir/objects1.rsp
 	g++ -std=c++20 -Wextra -O2 -Wl,--whole-archive CMakeFiles/server.dir/objects.a -Wl,--no-whole-archive -o server.exe -Wl,--out-implib,libserver.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/server.dir/linkLibs.rsp
