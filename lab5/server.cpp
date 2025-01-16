@@ -9,6 +9,7 @@
 #include <string.h>         /* memset */
 #include <string>
 #include <time.h>
+#include <vector>
 
 #ifdef _WIN32
 #   include <winsock2.h>    /* socket */
@@ -137,6 +138,7 @@ public:
         }
         std::string input = m_input_buf;
         std::string type = input.substr(input.find("GET") + 4, 4);
+        bool table = (input.find("Graph") == std::string::npos);
         std::stringstream response;
         std::stringstream response_body;
         char* sql_stmt = "";
@@ -160,7 +162,12 @@ public:
                 sqlite3_close(_db);
                 return;
             }
-            response_body << readFile("../data.html", stmt);
+            if(table){
+                response_body << readFile("../data_table.html", stmt, table);
+            } else {
+                response_body << readFile("../data_graphic.html", stmt, table);
+            }
+            
         }
         
         response << "HTTP/1.0 200 OK\r\n"
@@ -185,24 +192,38 @@ private:
     char   m_input_buf[1024];
     sqlite3* _db;
 
-    std::string readFile(std::string fileName, sqlite3_stmt* table_data){
+    std::string readFile(std::string fileName, sqlite3_stmt* table_data, bool table = true){
         std::ifstream f(fileName);
         std::stringstream ss;
+        std::string first_part = "";
         ss << f.rdbuf();
         std::string file_body = ss.str();
         if(!table_data){
             return file_body;
         }
-
-        std::string first_part = file_body.substr(0, file_body.find("<tbody>") + 7);
-        std::string second_part = file_body.substr(file_body.find("<tbody>") + 7);
-        while (sqlite3_step(table_data) == SQLITE_ROW) {
-            time_t temp_time = std::stoll((char*)sqlite3_column_text(table_data, 2));
-            // std::cout << temp_time << "\n";
-            // std::cout << "time: " << ctime(&temp_time) << "\n";
-            first_part += "<tr><td>" + std::string(((char*)sqlite3_column_text(table_data, 1))) + "</td><td>" + std::string(ctime(&temp_time)) + "</td></tr>";
+        if(table){
+            first_part = file_body.substr(0, file_body.find("<tbody>") + 7);
+            std::string second_part = file_body.substr(file_body.find("<tbody>") + 7);
+            while (sqlite3_step(table_data) == SQLITE_ROW) {
+                time_t temp_time = std::stoll((char*)sqlite3_column_text(table_data, 2));
+                first_part += "<tr><td>" + std::string(((char*)sqlite3_column_text(table_data, 1))) + "</td><td>" + std::string(ctime(&temp_time)) + "</td></tr>";
+            }
+            first_part += second_part;
+        } else {
+            std::vector<double> temp = {};
+            size_t size = 0;
+            first_part = file_body.substr(0, file_body.find("data: [") + 7);
+            std::string second_part = file_body.substr(file_body.find("data: [") + 7);
+            while (sqlite3_step(table_data) == SQLITE_ROW) {
+                size++;
+                temp.push_back(std::stod(((char*)sqlite3_column_text(table_data, 1))));
+            }
+            for(size_t i = 0; i < size; ++i){
+                first_part += "{x:" + std::to_string((double)i / (double)size) + ",y:"+ std::to_string(temp[i]) + "},";
+            }
+            first_part += second_part;
         }
-        first_part += second_part;
+        // {x:-10,y:0},
         return first_part;
     }
 };

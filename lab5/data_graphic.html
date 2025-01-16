@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>График с помощью Chart.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <canvas id="myChart"></canvas>
+    <script>
+      const ctx = document.getElementById('myChart').getContext('2d');
+      const myChart = new Chart(ctx, {
+        type: 'scatter',
+        data: {
+          labels: 'Dataset 1',
+          datasets: [
+            {
+              label: 'Температура за указанный период',
+              data: [],
+              backgroundColor: 'rgba(255, 99, 132, 0.2)',
+              borderColor: 'rgba(255, 99, 132, 1)',
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+          x: {
+            title: {
+              display: true,
+              text: 'Процентное окончание 24-х часов'
+            }
+          },
+          y: {
+            title: {
+              display: true,
+              text: 'Температура'
+            }
+          }
+        },
+        },
+      });
+    </script>
+  </body>
+</html>

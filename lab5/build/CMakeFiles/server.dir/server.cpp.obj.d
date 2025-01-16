@@ -155,6 +155,11 @@ CMakeFiles/server.dir/server.cpp.obj: \
  C:/msys64/ucrt64/include/_mingw_stdarg.h \
  C:/msys64/ucrt64/include/string.h \
  C:/msys64/ucrt64/include/sec_api/string_s.h \
+ C:/msys64/ucrt64/include/c++/13.1.0/vector \
+ C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_uninitialized.h \
+ C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_vector.h \
+ C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_bvector.h \
+ C:/msys64/ucrt64/include/c++/13.1.0/bits/vector.tcc \
  C:/msys64/ucrt64/include/winsock2.h \
  C:/msys64/ucrt64/include/_mingw_unicode.h \
  C:/msys64/ucrt64/include/windows.h C:/msys64/ucrt64/include/sdkddkver.h \

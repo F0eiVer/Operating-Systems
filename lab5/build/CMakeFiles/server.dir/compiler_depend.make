@@ -67,12 +67,15 @@ CMakeFiles/server.dir/server.cpp.obj: C:/Users/Admin/Desktop/Operating_systems_p
   C:/msys64/ucrt64/include/c++/13.1.0/bits/sstream.tcc \
   C:/msys64/ucrt64/include/c++/13.1.0/bits/std_abs.h \
   C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_algobase.h \
+  C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_bvector.h \
   C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_construct.h \
   C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_function.h \
   C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_iterator.h \
   C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_iterator_base_funcs.h \
   C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_iterator_base_types.h \
   C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_pair.h \
+  C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_uninitialized.h \
+  C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_vector.h \
   C:/msys64/ucrt64/include/c++/13.1.0/bits/streambuf.tcc \
   C:/msys64/ucrt64/include/c++/13.1.0/bits/streambuf_iterator.h \
   C:/msys64/ucrt64/include/c++/13.1.0/bits/string_view.tcc \
@@ -80,6 +83,7 @@ CMakeFiles/server.dir/server.cpp.obj: C:/Users/Admin/Desktop/Operating_systems_p
   C:/msys64/ucrt64/include/c++/13.1.0/bits/uses_allocator.h \
   C:/msys64/ucrt64/include/c++/13.1.0/bits/uses_allocator_args.h \
   C:/msys64/ucrt64/include/c++/13.1.0/bits/utility.h \
+  C:/msys64/ucrt64/include/c++/13.1.0/bits/vector.tcc \
   C:/msys64/ucrt64/include/c++/13.1.0/cctype \
   C:/msys64/ucrt64/include/c++/13.1.0/cerrno \
   C:/msys64/ucrt64/include/c++/13.1.0/clocale \
@@ -118,6 +122,7 @@ CMakeFiles/server.dir/server.cpp.obj: C:/Users/Admin/Desktop/Operating_systems_p
   C:/msys64/ucrt64/include/c++/13.1.0/tuple \
   C:/msys64/ucrt64/include/c++/13.1.0/type_traits \
   C:/msys64/ucrt64/include/c++/13.1.0/typeinfo \
+  C:/msys64/ucrt64/include/c++/13.1.0/vector \
   C:/msys64/ucrt64/include/c++/13.1.0/x86_64-w64-mingw32/bits/atomic_word.h \
   C:/msys64/ucrt64/include/c++/13.1.0/x86_64-w64-mingw32/bits/basic_file.h \
   C:/msys64/ucrt64/include/c++/13.1.0/x86_64-w64-mingw32/bits/c++allocator.h \
@@ -743,6 +748,8 @@ C:/msys64/ucrt64/include/c++/13.1.0/ext/atomicity.h:
 
 C:/msys64/ucrt64/include/_timeval.h:
 
+C:/msys64/ucrt64/include/c++/13.1.0/bits/vector.tcc:
+
 C:/msys64/ucrt64/include/apiset.h:
 
 C:/msys64/ucrt64/include/psdk_inc/_ip_mreq1.h:
@@ -853,6 +860,8 @@ C:/msys64/ucrt64/include/c++/13.1.0/bits/functexcept.h:
 
 C:/msys64/ucrt64/include/c++/13.1.0/bits/hash_bytes.h:
 
+C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_uninitialized.h:
+
 C:/msys64/ucrt64/include/c++/13.1.0/bits/ios_base.h:
 
 C:/msys64/ucrt64/include/c++/13.1.0/bits/istream.tcc:
@@ -899,6 +908,10 @@ C:/msys64/ucrt64/include/c++/13.1.0/bits/refwrap.h:
 
 C:/msys64/ucrt64/include/c++/13.1.0/bits/std_abs.h:
 
+C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/fmaintrin.h:
+
+C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_bvector.h:
+
 C:/msys64/ucrt64/include/c++/13.1.0/cwchar:
 
 C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_construct.h:
@@ -920,6 +933,10 @@ C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_iterator_base_types.h:
 C:/msys64/ucrt64/include/mmsystem.h:
 
 C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_pair.h:
+
+C:/msys64/ucrt64/include/c++/13.1.0/iosfwd:
+
+C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_vector.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/xsaveintrin.h:
 
@@ -991,8 +1008,6 @@ C:/msys64/ucrt64/include/winbase.h:
 
 C:/msys64/ucrt64/include/c++/13.1.0/ios:
 
-C:/msys64/ucrt64/include/c++/13.1.0/iosfwd:
-
 C:/msys64/ucrt64/include/sdkddkver.h:
 
 C:/msys64/ucrt64/include/c++/13.1.0/iostream:
@@ -1036,6 +1051,8 @@ C:/msys64/ucrt64/include/c++/13.1.0/type_traits:
 C:/msys64/ucrt64/include/psdk_inc/_ip_types.h:
 
 C:/msys64/ucrt64/include/c++/13.1.0/typeinfo:
+
+C:/msys64/ucrt64/include/c++/13.1.0/vector:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/lwpintrin.h:
 
@@ -1458,8 +1475,6 @@ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/xsaveoptintrin.h:
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/f16cintrin.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/fma4intrin.h:
-
-C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/fmaintrin.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/gfniintrin.h:
 
