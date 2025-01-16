@@ -8,6 +8,7 @@
 #include <stdlib.h>         /* atoi */
 #include <string.h>         /* memset */
 #include <string>
+#include <time.h>
 
 #ifdef _WIN32
 #   include <winsock2.h>    /* socket */
@@ -196,17 +197,19 @@ private:
         std::string first_part = file_body.substr(0, file_body.find("<tbody>") + 7);
         std::string second_part = file_body.substr(file_body.find("<tbody>") + 7);
         while (sqlite3_step(table_data) == SQLITE_ROW) {
-            first_part += "<tr><td>" + std::string(((char*)sqlite3_column_text(table_data, 1))) + "</td><td>" +  std::string(((char*)sqlite3_column_text(table_data, 2))) + "</td></tr>";
+            time_t temp_time = std::stoll((char*)sqlite3_column_text(table_data, 2));
+            // std::cout << temp_time << "\n";
+            // std::cout << "time: " << ctime(&temp_time) << "\n";
+            first_part += "<tr><td>" + std::string(((char*)sqlite3_column_text(table_data, 1))) + "</td><td>" + std::string(ctime(&temp_time)) + "</td></tr>";
         }
         first_part += second_part;
-        //"<tr><td> </td><td> </td></tr>"
         return first_part;
     }
 };
 
 // Основная программа
 int main (int argc, char** argv)
-{
+{   
     if (argc < 3) {
         std::cout << "Usage: ipv4srv_addr srv_port" << std::endl;
         return -1;
