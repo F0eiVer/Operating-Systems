@@ -100,7 +100,7 @@ public:
         return m_socket;
     }
 	// Обработаем подключение клиента (браузера), возвращая ему строку с железки
-    void ProcessClient(const char* device_str)
+    void ProcessClient()
     {
         // Принимаем входящие соединения
         SOCKET client_socket = accept(m_socket, NULL, NULL);
@@ -111,20 +111,21 @@ public:
         }
         // Хочет ли клиент с нами говорить?
 		// (современные браузеры могу открыть два подключения сразу)
-        struct pollfd polstr;
-        memset(&polstr, 0, sizeof(polstr));
-        polstr.fd = client_socket;
-        polstr.events |= POLLIN;
-#ifdef _WIN32
-        int ret = WSAPoll(&polstr, 1, READ_WAIT_MS);
-#else
-        int ret = poll(&polstr, 1, READ_WAIT_MS);
-#endif
+//         struct pollfd polstr;
+//         memset(&polstr, 0, sizeof(polstr));
+//         polstr.fd = client_socket;
+//         polstr.events |= POLLIN;
+// #ifdef _WIN32
+//         int ret = WSAPoll(&polstr, 1, READ_WAIT_MS);
+// #else
+//         int ret = poll(&polstr, 1, READ_WAIT_MS);
+// #endif
+//         std::cout << ret << "\n";
 		// Не хочет - закрываем сокет
-        if (ret <= 0) {
-            CloseSocket(client_socket);
-            return;
-        }
+        // if (ret <= 0) {
+        //     CloseSocket(client_socket);
+        //     return;
+        // }
         // Прочитаем, что клиент нам сказал (блокирующий вызов!!)
         int result = recv(client_socket, m_input_buf, sizeof(m_input_buf), 0);
         if (result == SOCKET_ERROR) {
@@ -137,8 +138,10 @@ public:
             return;
         }
         std::string input = m_input_buf;
+        std::cout << m_input_buf << "\n";
         std::string type = input.substr(input.find("GET") + 4, 4);
         bool table = (input.find("Graph") == std::string::npos);
+        bool clearData = (input.find("Clear") != std::string::npos);
         std::stringstream response;
         std::stringstream response_body;
         char* sql_stmt = "";
@@ -163,9 +166,9 @@ public:
                 return;
             }
             if(table){
-                response_body << readFile("../data_table.html", stmt, table);
+                response_body << readFile("../data_table.html", stmt, table, clearData);
             } else {
-                response_body << readFile("../data_graphic.html", stmt, table);
+                response_body << readFile("../data_graphic.html", stmt, table, clearData);
             }
             
         }
@@ -192,7 +195,7 @@ private:
     char   m_input_buf[1024];
     sqlite3* _db;
 
-    std::string readFile(std::string fileName, sqlite3_stmt* table_data, bool table = true){
+    std::string readFile(std::string fileName, sqlite3_stmt* table_data, bool table = true, bool clearData = false){
         std::ifstream f(fileName);
         std::stringstream ss;
         std::string first_part = "";
@@ -206,7 +209,8 @@ private:
             std::string second_part = file_body.substr(file_body.find("<tbody>") + 7);
             while (sqlite3_step(table_data) == SQLITE_ROW) {
                 time_t temp_time = std::stoll((char*)sqlite3_column_text(table_data, 2));
-                first_part += "<tr><td>" + std::string(((char*)sqlite3_column_text(table_data, 1))) + "</td><td>" + std::string(ctime(&temp_time)) + "</td></tr>";
+                std::string time = (clearData) ? std::to_string(temp_time) : std::string(ctime(&temp_time));
+                first_part += "<tr><td>" + std::string(((char*)sqlite3_column_text(table_data, 1))) + "</td><td>" + time + "</td></tr>";
             }
             first_part += second_part;
         } else {
@@ -261,9 +265,6 @@ int main (int argc, char** argv)
     polstr.fd = server_socket;
     polstr.events |= POLLIN;
 
-    // Буфер для получения данных от железки
-    char server_buf[255];
-    memset(server_buf, 0, sizeof(server_buf));
     // Цикл ожидания событий на сокетах
     for (;;) {
         int ret = 0;
@@ -272,6 +273,7 @@ int main (int argc, char** argv)
 #else
         ret = poll(polstr, 1, -1);
 #endif
+        std::cout << ret << "\n";
         // Ошибка сокета
         if (ret <= 0) {
             std::cout << "Error on poll: " << SocketWorker::ErrorCode() << std::endl;
@@ -279,7 +281,7 @@ int main (int argc, char** argv)
         }
         if (polstr.revents & POLLIN) {
             // Есть HTTP-клиент - возвращаем ему страницу
-            srv.ProcessClient(server_buf);
+            srv.ProcessClient();
         }
     }
     // Сюда мы никогда не попадем, но в цикле можно предусмотреть условие выхода, например по ошибке Poll

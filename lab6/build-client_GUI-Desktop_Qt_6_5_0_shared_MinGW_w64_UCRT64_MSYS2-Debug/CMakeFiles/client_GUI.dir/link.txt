@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\client_GUI.dir/objects.a
+C:\msys64\ucrt64\bin\ar.exe qc CMakeFiles\client_GUI.dir/objects.a @CMakeFiles\client_GUI.dir\objects1.rsp
+C:\msys64\ucrt64\bin\g++.exe -DQT_QML_DEBUG -g -mwindows -Wl,--whole-archive CMakeFiles\client_GUI.dir/objects.a -Wl,--no-whole-archive -o client_GUI.exe -Wl,--out-implib,libclient_GUI.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\client_GUI.dir\linkLibs.rsp

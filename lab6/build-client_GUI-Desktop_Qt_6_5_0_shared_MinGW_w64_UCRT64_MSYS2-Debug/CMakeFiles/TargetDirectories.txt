@@ -1,0 +1,9 @@
+C:/Users/Admin/Desktop/Operating_systems_project/lab6/build-client_GUI-Desktop_Qt_6_5_0_shared_MinGW_w64_UCRT64_MSYS2-Debug/CMakeFiles/client_GUI.dir
+C:/Users/Admin/Desktop/Operating_systems_project/lab6/build-client_GUI-Desktop_Qt_6_5_0_shared_MinGW_w64_UCRT64_MSYS2-Debug/CMakeFiles/edit_cache.dir
+C:/Users/Admin/Desktop/Operating_systems_project/lab6/build-client_GUI-Desktop_Qt_6_5_0_shared_MinGW_w64_UCRT64_MSYS2-Debug/CMakeFiles/rebuild_cache.dir
+C:/Users/Admin/Desktop/Operating_systems_project/lab6/build-client_GUI-Desktop_Qt_6_5_0_shared_MinGW_w64_UCRT64_MSYS2-Debug/CMakeFiles/list_install_components.dir
+C:/Users/Admin/Desktop/Operating_systems_project/lab6/build-client_GUI-Desktop_Qt_6_5_0_shared_MinGW_w64_UCRT64_MSYS2-Debug/CMakeFiles/install.dir
+C:/Users/Admin/Desktop/Operating_systems_project/lab6/build-client_GUI-Desktop_Qt_6_5_0_shared_MinGW_w64_UCRT64_MSYS2-Debug/CMakeFiles/install/local.dir
+C:/Users/Admin/Desktop/Operating_systems_project/lab6/build-client_GUI-Desktop_Qt_6_5_0_shared_MinGW_w64_UCRT64_MSYS2-Debug/CMakeFiles/install/strip.dir
+C:/Users/Admin/Desktop/Operating_systems_project/lab6/build-client_GUI-Desktop_Qt_6_5_0_shared_MinGW_w64_UCRT64_MSYS2-Debug/CMakeFiles/client_GUI_autogen_timestamp_deps.dir
+C:/Users/Admin/Desktop/Operating_systems_project/lab6/build-client_GUI-Desktop_Qt_6_5_0_shared_MinGW_w64_UCRT64_MSYS2-Debug/CMakeFiles/client_GUI_autogen.dir

@@ -109,6 +109,20 @@
     "cinttypes": "cpp",
     "typeinfo": "cpp",
     "ctime": "cpp",
-    "fstream": "cpp"
+    "fstream": "cpp",
+    "charconv": "cpp",
+    "chrono": "cpp",
+    "condition_variable": "cpp",
+    "ratio": "cpp",
+    "format": "cpp",
+    "future": "cpp",
+    "iomanip": "cpp",
+    "mutex": "cpp",
+    "semaphore": "cpp",
+    "span": "cpp",
+    "stdfloat": "cpp",
+    "stop_token": "cpp",
+    "thread": "cpp",
+    "variant": "cpp"
   }
 }
